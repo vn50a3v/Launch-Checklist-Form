@@ -43,16 +43,11 @@ let form = document.querySelector("#launchForm");
  
        submit.addEventListener('click', (event) => {
 
-         
-         
-
-      
    if (!pilot.value ) {
       alert("All fields are required!");
      if(typeof pilot !== "string" ) {
          pilotNameError.innerText = 'Please enter the Pilot Name';
       
-         event.preventDefault();
          return;
        }
    }
@@ -63,7 +58,7 @@ let form = document.querySelector("#launchForm");
    if (!copilot.value ) {
       if(typeof copilot !== "string" ) {
     copilotNameError.innerText = 'Please enter the Co-Pilot Name';
-    event.preventDefault();
+    
     return;
   }
 }
@@ -76,7 +71,7 @@ let form = document.querySelector("#launchForm");
              status.style.color= "red";
              fuelLevelError.innerText = 'Please enter a valid number';
              fuelStatus.innerText = "Fuel level too low for launch";
-             event.preventDefault();
+            
 
          }
 
@@ -86,13 +81,13 @@ let form = document.querySelector("#launchForm");
               status.style.color= "red";
               cargoStatus.innerText = "Cargo Mass is too much for the shuttle to take off";
               fuelLevelError.innerText = 'Please enter a valid number';
-              event.preventDefault();
+            
           }    
 
    if (!Fuel.value ) {
        if(typeof Fuel !== "number" ) {
          fuelLevelError.innerText = 'Please enter the Fuel Level';
-         event.preventDefault();
+         
          return;
        }
    }
@@ -105,7 +100,7 @@ let form = document.querySelector("#launchForm");
    if (!Cargo.value ) {
       if(typeof Fuel !== "number" ) {
         cargoMassError.innerText = 'Please enter the Cargo Mass';
-        event.preventDefault();
+        
         return;
       }
   }
@@ -126,6 +121,10 @@ if ( pilot.value && copilot.value && fuel.value && Cargo.value)
              
             status.innerText= "Shuttle is ready for launch";
             status.style.color= "green";
+            cargoStatus.innerText = "The Cargo mass value is acceptable";
+            fuelStatus.innerText = "The Fuel value is good ";
+            faulty.style.visibility = 'visible';
+              
             alert("Recorded!!!");
             }
 
@@ -133,7 +132,7 @@ if ( pilot.value && copilot.value && fuel.value && Cargo.value)
 
       }    
    }
-
+      event.preventDefault ();
          
        });
 
